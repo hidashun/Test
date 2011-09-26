@@ -8,7 +8,7 @@ class UserPrefs(db.Model):
     user = db.UserProperty(auto_current_user_add=True)
     
     def cache_set(self):
-        logging.info('cache set')
+        #logging.info('cache set')
         memcache.set(self.key().name(), self, namespace=self.key().kind())
         
     def put(self):
@@ -31,5 +31,5 @@ def get_userprefs(user_id=None):
         else:
             userprefs = UserPrefs(key_name=user_id)
     else:
-        logging.info('cache get')
+        #logging.info('cache get')
     return userprefs
